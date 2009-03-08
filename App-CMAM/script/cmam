@@ -8,7 +8,6 @@ use warnings;
 use Mac::FSEvents;
 use IO::Select;
 use Getopt::Long;
-use Data::Dump qw( dd );
 
 my ($repo_dir, $watch_dir);
 my $latency = 5.0;
@@ -41,7 +40,7 @@ my $sel = IO::Select->new($fh);
 print STDERR "Watching '$watch_dir' (latency $)\n";
 while ($sel->can_read) {
   commit_files();
-  dd($fs->read_events);
+  $fs->read_events;
 }
 
 $fs->stop;
