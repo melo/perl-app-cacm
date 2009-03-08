@@ -11,9 +11,11 @@ use Getopt::Long;
 use Data::Dump qw( dd );
 
 my ($repo_dir, $watch_dir);
+my $latency = 5.0;
 my $ok = GetOptions(
-  "repo=s"  => \$repo_dir,
-  "watch=s" => \$watch_dir,
+  "repo=s"    => \$repo_dir,
+  "watch=s"   => \$watch_dir,
+  "latency=i" => \$latency,
 );
 
 die "Usage: cacm --repo=dir_for_git_repo --watch=dir_to_watch\n" unless $repo_dir && $watch_dir;
@@ -28,7 +30,7 @@ unless (-d $repo_dir) {
 
 my $fs = Mac::FSEvents->new( {
     path    => $watch_dir, # required, the path to watch
-    latency => 1.0,        # optional, time to delay before returning events
+    latency => $latency,   # optional, time to delay before returning events
 } );
 
 $ENV{GIT_WORK_TREE} = $watch_dir;
@@ -36,7 +38,7 @@ $ENV{GIT_WORK_TREE} = $watch_dir;
 my $fh = $fs->watch;
 my $sel = IO::Select->new($fh);
 
-print STDERR "Watching '$watch_dir'\n";
+print STDERR "Watching '$watch_dir' (latency $latency)\n";
 while ($sel->can_read) {
   commit_files();
   dd($fs->read_events);
