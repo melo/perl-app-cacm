@@ -5,7 +5,7 @@ use strict;
 
 =head1 NAME
 
-App::CMAM - The great new App::CMAM!
+App::CMAM - Watch and commit differences
 
 =head1 VERSION
 
@@ -18,35 +18,19 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+    # the module is empty for now, use the cacm script like this:
+    
+    cacm --repo path_to_git_repo --watch directory_to_watch
+    
+    # it will commit at most once per 5 seconds
+    # you can tweak the latency with --latency N
 
-Perhaps a little code snippet.
 
-    use App::CMAM;
+=head1 DESCRIPTION
 
-    my $foo = App::CMAM->new();
-    ...
+The cmam script will watch over a specific directory and commit the
+detected changes to a Git repository.
 
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
-=head1 FUNCTIONS
-
-=head2 function1
-
-=cut
-
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
-}
 
 =head1 AUTHOR
 
