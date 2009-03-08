@@ -6,7 +6,7 @@ version  '0.01';
 author   'Pedro Melo <melo@cpan.org>';
 license  'perl';
 
-install_script 'cacm'
+install_script 'cacm';
 
 requires 'Mac::FSEvents' => 0;
 
