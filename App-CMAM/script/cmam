@@ -38,7 +38,7 @@ $ENV{GIT_WORK_TREE} = $watch_dir;
 my $fh = $fs->watch;
 my $sel = IO::Select->new($fh);
 
-print STDERR "Watching '$watch_dir' (latency $latency)\n";
+print STDERR "Watching '$watch_dir' (latency $)\n";
 while ($sel->can_read) {
   commit_files();
   dd($fs->read_events);

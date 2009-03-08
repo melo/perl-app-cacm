@@ -4,7 +4,7 @@ META.yml
 Makefile.PL
 README
 lib/App/CMAM.pm
-script/cacm
+script/cmam
 t/00-load.t
 t/pod-coverage.t
 t/pod.t
